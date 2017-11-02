@@ -351,6 +351,11 @@ class UsersController < ApplicationController
 
     authentication.start
 
+    if authentication.email_valid? && !authentication.authenticated?
+      # posted email is different that the already validated one?
+      return fail_with('login.incorrect_username_email_or_password')
+    end
+
     activation = UserActivator.new(user, request, session, cookies)
     activation.start
 
@@ -636,7 +641,7 @@ class UsersController < ApplicationController
       primary_email = @user.primary_email
 
       primary_email.email = params[:email]
-      primary_email.should_validate_email = true
+      primary_email.skip_validate_email = false
 
       if primary_email.save
         @user.email_tokens.create(email: @user.email)
@@ -705,24 +710,18 @@ class UsersController < ApplicationController
 
     to_render = { users: results.as_json(only: user_fields, methods: [:avatar_template]) }
 
-    if params[:include_groups] == "true"
-      to_render[:groups] = Group.search_group(term).map do |m|
-        { name: m.name, full_name: m.full_name }
-      end
-    end
-
-    if current_user
-      groups =
+    groups =
+      if current_user
         if params[:include_mentionable_groups] == 'true'
           Group.mentionable(current_user)
         elsif params[:include_messageable_groups] == 'true'
           Group.messageable(current_user)
         end
-
-      if groups
-        to_render[:groups] = groups.where("name ILIKE :term_like", term_like: "#{term}%")
-          .map { |m| { name: m.name, full_name: m.full_name } }
       end
+
+    if groups || params[:include_groups] == "true"
+      to_render[:groups] = Group.search_groups(term, groups: groups)
+        .map { |m| { name: m.name, full_name: m.full_name } }
     end
 
     render json: to_render

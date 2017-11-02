@@ -35,7 +35,7 @@ gem 'redis-namespace'
 
 gem 'active_model_serializers', '~> 0.8.3'
 
-gem 'onebox', '1.8.19'
+gem 'onebox', '1.8.21'
 
 gem 'http_accept_language', '~>2.0.5', require: false
 
@@ -172,6 +172,8 @@ gem 'memory_profiler', require: false, platform: :mri
 
 gem 'cppjieba_rb', require: false
 
+gem 'lograge', require: false
+gem 'logstash-event', require: false
 gem 'logster'
 
 gem 'sassc', require: false
