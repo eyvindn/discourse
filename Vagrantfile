@@ -17,10 +17,10 @@ Vagrant.configure("2") do |config|
 
   config.vm.provider :virtualbox do |v|
     # This setting gives the VM 1024MB of RAM instead of the default 384.
-    v.customize ["modifyvm", :id, "--memory", [ENV['DISCOURSE_VM_MEM'].to_i, 1024].max]
+    v.customize ["modifyvm", :id, "--memory", [ENV['DISCOURSE_VM_MEM'].to_i, 2048].max]
 
     # Who has a single core cpu these days anyways?
-    cpu_count = 2
+    cpu_count = 4
 
     # Determine the available cores in host system.
     # This mostly helps on linux, but it couldn't hurt on MacOSX.
@@ -43,6 +43,6 @@ Vagrant.configure("2") do |config|
   config.vm.network :forwarded_port, guest: 1080, host: 4080 # Mailcatcher
 
   nfs_setting = RUBY_PLATFORM =~ /darwin/ || RUBY_PLATFORM =~ /linux/
-  config.vm.synced_folder ".", "/vagrant", id: "vagrant-root"
+  config.vm.synced_folder ".", "/vagrant", id: "vagrant-root", type: "nfs"
 
 end

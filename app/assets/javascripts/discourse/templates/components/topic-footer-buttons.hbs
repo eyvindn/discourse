@@ -1,5 +1,6 @@
 <div class='topic-footer-main-buttons'>
-  {{#if showAdminButton}}
+
+    {{#if showAdminButton}}
     {{topic-admin-menu-button
       topic=topic
       openUpwards="true"
@@ -42,6 +43,7 @@
   {{/unless}}
 
   {{#if canInviteTo}}
+
     {{d-button class="invite-topic"
                title="topic.invite_reply.help"
                label="topic.invite_reply.title"

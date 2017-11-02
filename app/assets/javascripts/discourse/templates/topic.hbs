@@ -49,6 +49,54 @@
 
             {{#if model.details.can_edit}}
               <a href {{action "editTopic"}} class="edit-topic" title="{{i18n "edit"}}">{{d-icon "pencil"}}</a>
+
+                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+                  <script src="/javascripts/daniels.js"></script>
+
+                    <button type="button" class="btn btn-blue" data-toggle="modal" data-target="#bannerformmodal">Graduate Project!</button>
+
+                   <div class="modal fade bannerformmodal" tabindex="-1" role="dialog" aria-labelledby="bannerformmodal" aria-hidden="true" id="bannerformmodal">
+                   <div class="modal-dialog modal-md" id="listform">
+                       <div class="modal-content">
+                         <div class="modal-content">
+                           <div class="modal-header">
+                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                           <h4 class="modal-title" id="myModalLabel">Create List Form</h4>
+                           </div>
+                           <div class="modal-body">
+                             <form id="requestacallform" method="POST" name="requestacallform">
+                               <div class="form-group">
+                                 <div class="input-group">
+                                   <span class="input-group-addon"><i class="fa fa-border"></i></span>
+                                   <input id="board_name" type="text" style="padding: .8em;" class="form-control" placeholder="Epic" name="list_name"/>
+                                 </div>
+                               </div>
+                               <div class="form-group">
+                                 <div class="input-group">
+                                   <span class="input-group-addon"><i class="fa fa-border"></i></span>
+                                   <input id="list_name" type="text" style="padding: .8em;" class="form-control" placeholder="Story" name="list_name"/>
+                                 </div>
+                               </div>
+                               <hr>
+                               <div class="form-group">
+                                 <div class="input-group">
+                                   <span class="input-group-addon"><i class="fa fa-border"></i></span>
+                                   <input type="text" style="padding: .8em;" class="form-control card_name" placeholder="Task" name="card_name"/>
+                                 </div>
+                               </div>
+                               <span id="addmore" style="font-size: 15px"style="cursor:pointer;">Add More Tasks...</span>
+                             </form>
+                             <div class="modal-footer">
+                               <button type="button" class="btn btn-blue" id="createList">Submit</button>
+                             </div>
+                             <div id="boardCreated">
+
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+                     </div>
+                  </div>
             {{/if}}
           </h1>
 
