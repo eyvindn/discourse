@@ -52,7 +52,7 @@ var creationSuccess = function (data) {
     //if(err) console.log(err);
     
     let topic_id = result.topic_id;
-    result.raw = '**[Go to trello and see what\'s happening!](' + data.shortUrl +') **' 
+    result.raw = '\n[**GO AND SEE OUR TRELLO BOARD**](' + data.shortUrl +') ** \n\n' + result.raw
 
     let postParam = {
       "post[raw]" : result.raw
