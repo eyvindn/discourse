@@ -52,7 +52,7 @@ var creationSuccess = function (data) {
     //if(err) console.log(err);
     
     let topic_id = result.topic_id;
-    result.raw = '\n[**GO AND SEE OUR TRELLO BOARD**](' + data.shortUrl +') ** \n\n' + result.raw
+    result.raw = '\n[**GO AND SEE OUR TRELLO BOARD**](' + data.shortUrl +') \n\n' + result.raw
 
     let postParam = {
       "post[raw]" : result.raw
@@ -74,6 +74,7 @@ var creationSuccess = function (data) {
             type: 'PUT',
             data: params,
             success: function(data) {
+              $('#bannerformmodal').hide();
               $('#graduateButton').hide();
             }
           });
