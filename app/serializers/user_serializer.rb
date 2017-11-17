@@ -66,6 +66,8 @@ class UserSerializer < BasicUserSerializer
              :topic_post_count,
              :pending_count,
              :profile_view_count,
+             :time_read,
+             :recent_time_read,
              :primary_group_name,
              :primary_group_flair_url,
              :primary_group_flair_bg_color,
@@ -387,7 +389,7 @@ class UserSerializer < BasicUserSerializer
     end
 
     if fields.present?
-      User.custom_fields_for_ids([object.id], fields)[object.id]
+      User.custom_fields_for_ids([object.id], fields)[object.id] || {}
     else
       {}
     end
@@ -399,6 +401,14 @@ class UserSerializer < BasicUserSerializer
 
   def profile_view_count
     object.user_profile.views
+  end
+
+  def time_read
+    object.user_stat&.time_read
+  end
+
+  def recent_time_read
+    time = object.recent_time_read
   end
 
 end
