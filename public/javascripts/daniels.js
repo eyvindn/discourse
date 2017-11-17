@@ -58,6 +58,8 @@ var creationSuccess = function (data) {
       "post[raw]" : result.raw
     }
 
+    $('.close').trigger('click');
+    
     $.ajax({
       url: 'http://discussion.dataforyouand.me/posts/' + postId + '.json?api_key=b5a802f239160697786c69a642e70ddaa7eafb78446f8f6cbcc78b11a2ba8e34&api_username=eyvind',
       type: 'PUT',
@@ -74,7 +76,6 @@ var creationSuccess = function (data) {
             type: 'PUT',
             data: params,
             success: function(data) {
-              $('.close').trigger('click');
               $('#graduateButton').hide();
             }
           });
