@@ -54,23 +54,30 @@ var creationSuccess = function (data) {
     let topic_id = result.topic_id;
     result.raw = 'Link to trello: ' + data.shortUrl + '\n' + result.raw;
 
-    $.put('http://discussion.dataforyouand.me/posts/' + postId + '.json?api_key=b5a802f239160697786c69a642e70ddaa7eafb78446f8f6cbcc78b11a2ba8e34&api_username=eyvind', result, function(afterPostsPutResult){
-      //if(err) console.log(err);
-      
-      $.get('http://discussion.dataforyouand.me/t/-/' + topic_id + '.json?api_key=b5a802f239160697786c69a642e70ddaa7eafb78446f8f6cbcc78b11a2ba8e34&api_username=eyvind', function(topic){
-        //if(err) console.log(err);
-
-        let params = {
-          title: '[GRADUATED] ' + topic.title
-        }
-        $.put('http://discussion.dataforyouand.me/t/' + topic.slug + '/' + topic.id + '.json?api_key=b5a802f239160697786c69a642e70ddaa7eafb78446f8f6cbcc78b11a2ba8e34&api_username=eyvind', params, function(ohgosh){
-          //if(err) throw err;
-          console.log('please work');
-          $.get('http://discussion.dataforyouand.me');
+    $.ajax({
+      url: 'http://discussion.dataforyouand.me/posts/' + postId + '.json?api_key=b5a802f239160697786c69a642e70ddaa7eafb78446f8f6cbcc78b11a2ba8e34&api_username=eyvind',
+      type: 'PUT',
+      data: result,
+      success: function(data) {
+        $.get('http://discussion.dataforyouand.me/t/-/' + topic_id + '.json?api_key=b5a802f239160697786c69a642e70ddaa7eafb78446f8f6cbcc78b11a2ba8e34&api_username=eyvind', function(topic){
+          //if(err) console.log(err);
+          let params = {
+            title: '[GRADUATED] ' + topic.title
+          }
+          
+          $.ajax({
+            url: 'http://discussion.dataforyouand.me/t/' + topic.slug + '/' + topic.id + '.json?api_key=b5a802f239160697786c69a642e70ddaa7eafb78446f8f6cbcc78b11a2ba8e34&api_username=eyvind',
+            type: 'PUT',
+            data: params,
+            success: function(data) {
+              console.log('please work');
+              $.get('http://discussion.dataforyouand.me');
+            }
+          });
         });
-      })
-    })
-  })
+      }
+    });
+  });
 };
 
 $(function(){
