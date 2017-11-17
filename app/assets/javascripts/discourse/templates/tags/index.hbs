@@ -2,6 +2,14 @@
   {{discourse-banner user=currentUser banner=site.banner}}
 </div>
 
+{{#if canAdminTags}}
+<div class="list-controls">
+    <div class="container">
+        {{outlet "navigation-bar"}}
+    </div>
+</div>
+{{/if}}
+
 <div class="list-controls">
   <div class="container">
     {{#if canAdminTags}}
