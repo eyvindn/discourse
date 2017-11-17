@@ -52,7 +52,7 @@ var creationSuccess = function (data) {
     //if(err) console.log(err);
     
     let topic_id = result.topic_id;
-    result.raw = '##**[Go to trello and see what\'s happening!](' + data.shortUrl +') **' 
+    result.raw = '**[Go to trello and see what\'s happening!](' + data.shortUrl +') **' 
 
     let postParam = {
       "post[raw]" : result.raw
@@ -74,9 +74,7 @@ var creationSuccess = function (data) {
             type: 'PUT',
             data: params,
             success: function(data) {
-              console.log('please work');
-              $.get('http://discussion.dataforyouand.me');
-              $('#bannerformmodal').fade();
+              $('#graduateButton').hide();
             }
           });
         });
