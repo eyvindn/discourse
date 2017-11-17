@@ -68,6 +68,8 @@ GEM
       debug_inspector (>= 0.0.1)
     bootsnap (1.0.0)
       msgpack (~> 1.0)
+    bootstrap-tagsinput-rails (0.4.2.1)
+      railties (>= 3.1)
     builder (3.2.3)
     bullet (5.5.1)
       activesupport (>= 3.0.0)
@@ -414,6 +416,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootsnap
+  bootstrap-tagsinput-rails
   bullet
   byebug
   certified

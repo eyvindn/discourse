@@ -98,3 +98,4 @@
 //= require_tree ./discourse/initializers
 //= require_tree ./discourse/services
 //= require_tree ./discourse/widgets
+//= require bootstrap-tagsinput
