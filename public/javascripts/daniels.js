@@ -85,7 +85,7 @@ var creationSuccess = function (data) {
 };
 
 $(function(){
-  if($('.fancy-title').val().substring(0) === '[') {
+  if($('.fancy-title').text().indexOf('graduated') != -1) {
     $('#graduateButton').hide();
   }
 
