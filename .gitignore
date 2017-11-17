@@ -56,6 +56,9 @@ bootsnap-compile-cache/
 !/plugins/discourse-narrative-bot
 !/plugins/discourse-presence
 !/plugins/linkedin-auth-discourse
+!/plugins/discourse-plugin-checklist
+!/plugins/discourse-plugin-linkedin-auth
+!/plugins/linkedin-auth-discourse
 /plugins/*/auto_generated/
 
 /spec/fixtures/plugins/my_plugin/auto_generated
