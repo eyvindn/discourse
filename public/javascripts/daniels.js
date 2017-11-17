@@ -86,6 +86,10 @@ var creationSuccess = function (data) {
 };
 
 $(function(){
+  if($('.fancy-title').val().substring(0) === '[') {
+    $('#graduateButton').hide();
+  }
+
   $('input').attr('font-size', '10px;');
   $('#createList').click(function(){
     Trello.post('/boards?defaultLabels=false&defaultLists=false&name='+ $('#board_name').val() +'&prefs_permissionLevel=public', creationSuccess);
