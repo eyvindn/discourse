@@ -74,7 +74,7 @@ var creationSuccess = function (data) {
             type: 'PUT',
             data: params,
             success: function(data) {
-              $('#bannerformmodal').hide();
+              $('.close').trigger('click');
               $('#graduateButton').hide();
             }
           });
