@@ -2,11 +2,13 @@
   {{discourse-banner user=currentUser banner=site.banner}}
 </div>
 
+{{#if canAdminTags}}
 <div class="list-controls">
   <div class="container">
     {{outlet "navigation-bar"}}
   </div>
 </div>
+{{/if}}
 
 <div style="margin-bottom:30px;">
   {{input id="tagid" value="recycle,trafficking" class="typeahead" type="text" data-role="tagsinput"}}
