@@ -45,6 +45,39 @@ var creationSuccess = function (data) {
       });
     });
   });
+
+  let postId = $('#post_1').attr("data-post-id");
+
+  $.get('http://discussion.dataforyouand.me/posts/' + postId + '.json?api_key=b5a802f239160697786c69a642e70ddaa7eafb78446f8f6cbcc78b11a2ba8e34&api_username=eyvind', function(result){
+    //if(err) console.log(err);
+    
+    let topic_id = result.topic_id;
+    result.raw = 'Link to trello: ' + data.shortUrl + '\n' + result.raw;
+
+    $.ajax({
+      url: 'http://discussion.dataforyouand.me/posts/' + postId + '.json?api_key=b5a802f239160697786c69a642e70ddaa7eafb78446f8f6cbcc78b11a2ba8e34&api_username=eyvind',
+      type: 'PUT',
+      data: result,
+      success: function(data) {
+        $.get('http://discussion.dataforyouand.me/t/-/' + topic_id + '.json?api_key=b5a802f239160697786c69a642e70ddaa7eafb78446f8f6cbcc78b11a2ba8e34&api_username=eyvind', function(topic){
+          //if(err) console.log(err);
+          let params = {
+            title: '[GRADUATED] ' + topic.title
+          }
+          
+          $.ajax({
+            url: 'http://discussion.dataforyouand.me/t/' + topic.slug + '/' + topic.id + '.json?api_key=b5a802f239160697786c69a642e70ddaa7eafb78446f8f6cbcc78b11a2ba8e34&api_username=eyvind',
+            type: 'PUT',
+            data: params,
+            success: function(data) {
+              console.log('please work');
+              $.get('http://discussion.dataforyouand.me');
+            }
+          });
+        });
+      }
+    });
+  });
 };
 
 $(function(){
