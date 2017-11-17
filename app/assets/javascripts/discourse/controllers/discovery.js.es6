@@ -1,7 +1,6 @@
 import DiscourseURL from 'discourse/lib/url';
 
 export default Ember.Controller.extend({
-  tags: [],
   discoveryTopics: Ember.inject.controller('discovery/topics'),
   navigationCategory: Ember.inject.controller('navigation/category'),
   application: Ember.inject.controller(),
@@ -29,16 +28,10 @@ export default Ember.Controller.extend({
   actions: {
     changePeriod(p) {
       DiscourseURL.routeTo(this.showMoreUrl(p));
-    },
-    addTag(tag) {
-      this.get('tags').pushObject(tag);
-    },
-    removeTagAtIndex(index) {
-      this.get('tags').removeAt(index);
     }
   }
 
   
-
+  
 
 });
