@@ -9,8 +9,7 @@
 </div>
 
 <div style="margin-bottom:30px;">
-  <%= f.input :tag_list, input_html:{data:{role:'tagsinput'}} %>
-  <input id="tagid" value="recycle,trafficking" class="typeahead" type="text" data-role="tagsinput"/>
+  {{input id="tagid" value="recycle,trafficking" class="typeahead" type="text" data-role="tagsinput"}}
 </div>
 
 {{conditional-loading-spinner condition=loading}}
