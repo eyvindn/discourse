@@ -9,7 +9,14 @@
 </div>
 
 <div style="margin-bottom:30px;">
-  {{input id="tagid" value="recycle,trafficking" class="typeahead" type="text" data-role="tagsinput"}}
+  {{#tag-input
+  tags=tags
+  addTag=(action 'addTag')
+  removeTagAtIndex=(action 'removeTagAtIndex')
+  as |tag|
+  }}
+  {{tag}}
+  {{/tag-input}}
 </div>
 
 {{conditional-loading-spinner condition=loading}}
