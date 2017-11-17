@@ -76,6 +76,7 @@ var creationSuccess = function (data) {
             success: function(data) {
               console.log('please work');
               $.get('http://discussion.dataforyouand.me');
+              $('#bannerformmodal').fade();
             }
           });
         });
